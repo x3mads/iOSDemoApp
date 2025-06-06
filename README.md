@@ -38,7 +38,7 @@ However, to test with production ads:
 
 For detailed information on how to use this X3M library implementation, please refer to the official X3M Ads documentation:
 
-[X3M Ads Documentation](https://docs.x3mads.com/metamediation/)
+[X3M Ads Documentation](https://docs.loomit.x3mads.com/docs/Loomit/SDK%20integration%20guide/ios/Prerequisites/)
 
 This documentation provides comprehensive guides and examples for integrating and utilizing the X3M library in your projects.
 

@@ -9,6 +9,7 @@ class ContentViewModel: ObservableObject {
     
     private let bannerDelegate = BannerAdsDelegateDemo()
     private let interstitialDelegate = InterstitialAdsDelegateDemo()
+    private let appOpenDelegate = AppOpenAdsDelegateDemo()
     private let rewardedDelegate = RewardedAdsDelegateDemo()
 
     func start() {
@@ -44,6 +45,18 @@ class ContentViewModel: ObservableObject {
         }
         else {
             Utils.logger.log("interstitial not ready { placement_id: \(placementId) }")
+        }
+    }
+    
+    func showAppOpen() {
+        guard let placementId = mediator.appOpenPlacementId else {
+            return
+        }
+        if XMediatorAds.appOpen.isReady(withPlacementId: placementId) {
+            Utils.getTopViewController().map { XMediatorAds.appOpen.present(withPlacementId: placementId, fromViewController: $0) }
+        }
+        else {
+            Utils.logger.log("app_open not ready { placement_id: \(placementId) }")
         }
     }
     
@@ -93,6 +106,7 @@ class ContentViewModel: ObservableObject {
     private func setDelegates() {
         XMediatorAds.banner.addDelegate(bannerDelegate)
         XMediatorAds.interstitial.addDelegate(interstitialDelegate)
+        XMediatorAds.appOpen.addDelegate(appOpenDelegate)
         XMediatorAds.rewarded.addDelegate(rewardedDelegate)
     }
     
@@ -105,6 +119,11 @@ class ContentViewModel: ObservableObject {
         if let interstitialPlacementId = mediator.interstitialPlacementId {
             XMediatorAds.interstitial.load(placementId: interstitialPlacementId)
             Utils.logger.log("interstitial loading { placement_id: \(interstitialPlacementId) }")
+        }
+        
+        if let appOpenPlacementId = mediator.appOpenPlacementId {
+            XMediatorAds.appOpen.load(placementId: appOpenPlacementId)
+            Utils.logger.log("app_open loading { placement_id: \(appOpenPlacementId) }")
         }
 
         if let rewardedPlacementId = mediator.rewardedPlacementId {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C7A2C557E8802FE3BE536F2A /* Pods_demo_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5529E296057B3CA18471523A /* Pods_demo_app.framework */; };
+		FE9575282E410FEA003940D9 /* AppOpenAdsDelegateDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */; };
 		FF679CA62D5263960036D2F0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */; };
 		FF68C1C62D50F1020060F9E5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C1C52D50F1020060F9E5 /* Settings.swift */; };
 		FF7675192D4804680076B50E /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7675182D4804680076B50E /* DemoApp.swift */; };
@@ -26,6 +27,7 @@
 		182926B9E98D5D9237D9FC2D /* Pods-demo-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo-app.debug.xcconfig"; path = "Target Support Files/Pods-demo-app/Pods-demo-app.debug.xcconfig"; sourceTree = "<group>"; };
 		5529E296057B3CA18471523A /* Pods_demo_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demo_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C5237B06E7AE0B983E05F /* Pods-demo-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo-app.release.xcconfig"; path = "Target Support Files/Pods-demo-app/Pods-demo-app.release.xcconfig"; sourceTree = "<group>"; };
+		FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdsDelegateDemo.swift; sourceTree = "<group>"; };
 		FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FF68C1C52D50F1020060F9E5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FF7675152D4804680076B50E /* demo-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "demo-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 		FFA93FC02D4D306E009507DD /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */,
 				FFA93FBA2D4D3004009507DD /* BannerAdsDelegateDemo.swift */,
 				FFA93FBC2D4D3039009507DD /* InterstitialAdsDelegateDemo.swift */,
 				FFA93FBE2D4D3053009507DD /* RewardedAdsDelegateDemo.swift */,
@@ -264,6 +267,7 @@
 				FF76751B2D4804680076B50E /* ContentView.swift in Sources */,
 				FF7675192D4804680076B50E /* DemoApp.swift in Sources */,
 				FFA93FBF2D4D3053009507DD /* RewardedAdsDelegateDemo.swift in Sources */,
+				FE9575282E410FEA003940D9 /* AppOpenAdsDelegateDemo.swift in Sources */,
 				FF68C1C62D50F1020060F9E5 /* Settings.swift in Sources */,
 				FFA93FBB2D4D3004009507DD /* BannerAdsDelegateDemo.swift in Sources */,
 				FF7675272D4819490076B50E /* ContentViewModel.swift in Sources */,

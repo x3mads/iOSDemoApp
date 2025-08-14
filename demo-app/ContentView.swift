@@ -41,6 +41,9 @@ struct SettingsSection: View {
                             if let interstitialPlacementId = viewModel.mediator.interstitialPlacementId {
                                 Text("interstitial: \(interstitialPlacementId)")
                             }
+                            if let appOpenPlacementId = viewModel.mediator.appOpenPlacementId {
+                                Text("app_open: \(appOpenPlacementId)")
+                            }
                             if let rewardedPlacementId = viewModel.mediator.rewardedPlacementId {
                                 Text("rewarded: \(rewardedPlacementId)")
                             }
@@ -110,6 +113,8 @@ struct ShowSection: View {
             }
             Button("Show Interstitial") { viewModel.showInterstitial() }.buttonStyle(.bordered)
                 .disabled(viewModel.mediator.interstitialPlacementId == nil)
+            Button("Show AppOpen") { viewModel.showAppOpen() }.buttonStyle(.bordered)
+                .disabled(viewModel.mediator.appOpenPlacementId == nil)
             Button("Show Rewarded") { viewModel.showRewarded() }.buttonStyle(.bordered)
                 .disabled(viewModel.mediator.rewardedPlacementId == nil)
         }

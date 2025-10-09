@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C7A2C557E8802FE3BE536F2A /* Pods_demo_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5529E296057B3CA18471523A /* Pods_demo_app.framework */; };
+		FE86C9CF2E97E39A008A3E86 /* XMediatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86C9CE2E97E38F008A3E86 /* XMediatorHelper.swift */; };
 		FE9575282E410FEA003940D9 /* AppOpenAdsDelegateDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */; };
 		FF679CA62D5263960036D2F0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */; };
 		FF68C1C62D50F1020060F9E5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C1C52D50F1020060F9E5 /* Settings.swift */; };
@@ -27,6 +28,7 @@
 		182926B9E98D5D9237D9FC2D /* Pods-demo-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo-app.debug.xcconfig"; path = "Target Support Files/Pods-demo-app/Pods-demo-app.debug.xcconfig"; sourceTree = "<group>"; };
 		5529E296057B3CA18471523A /* Pods_demo_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demo_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C5237B06E7AE0B983E05F /* Pods-demo-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo-app.release.xcconfig"; path = "Target Support Files/Pods-demo-app/Pods-demo-app.release.xcconfig"; sourceTree = "<group>"; };
+		FE86C9CE2E97E38F008A3E86 /* XMediatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMediatorHelper.swift; sourceTree = "<group>"; };
 		FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdsDelegateDemo.swift; sourceTree = "<group>"; };
 		FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FF68C1C52D50F1020060F9E5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		FF7675172D4804680076B50E /* demo-app */ = {
 			isa = PBXGroup;
 			children = (
+				FE86C9CE2E97E38F008A3E86 /* XMediatorHelper.swift */,
 				FF76752C2D49062D0076B50E /* Info.plist */,
 				FF7675182D4804680076B50E /* DemoApp.swift */,
 				FF76751A2D4804680076B50E /* ContentView.swift */,
@@ -268,6 +271,7 @@
 				FF7675192D4804680076B50E /* DemoApp.swift in Sources */,
 				FFA93FBF2D4D3053009507DD /* RewardedAdsDelegateDemo.swift in Sources */,
 				FE9575282E410FEA003940D9 /* AppOpenAdsDelegateDemo.swift in Sources */,
+				FE86C9CF2E97E39A008A3E86 /* XMediatorHelper.swift in Sources */,
 				FF68C1C62D50F1020060F9E5 /* Settings.swift in Sources */,
 				FFA93FBB2D4D3004009507DD /* BannerAdsDelegateDemo.swift in Sources */,
 				FF7675272D4819490076B50E /* ContentViewModel.swift in Sources */,

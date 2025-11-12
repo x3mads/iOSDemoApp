@@ -6,7 +6,7 @@ use_frameworks!
 install! 'cocoapods'
 
 target 'demo-app' do
-  ### Note: Use the picker to select your dependencies https://docs.loomit.x3mads.com/docs/Loomit/SDK%20integration%20guide/ios
+  ### Note: Use the picker to select your dependencies https://docs.loomit.x3mads.com/docs/sdk/ios/#choose-mediators-and-networks
   
   # -- Mediation Libraries --
   pod 'XMediator'

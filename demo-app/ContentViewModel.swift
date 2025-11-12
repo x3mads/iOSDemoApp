@@ -8,6 +8,7 @@ class ContentViewModel: ObservableObject {
         }
     }
     @Published var initStatus: InitStatus = .idle
+    @Published var loadTriggered: Bool = false
     @Published var cmp: Bool = XMediatorHelper.shared.cmp {
         didSet {
             XMediatorHelper.shared.cmp = cmp
@@ -33,6 +34,11 @@ class ContentViewModel: ObservableObject {
         }
     }
     
+    func loadAds() {
+        XMediatorHelper.shared.loadAds()
+        loadTriggered = true
+    }
+    
     func bannerView() -> UIView? {
         XMediatorHelper.shared.bannerView()
     }
@@ -51,6 +57,10 @@ class ContentViewModel: ObservableObject {
     
     func openDebuggingSuite() {
         XMediatorHelper.shared.openDebuggingSuite()
+    }
+    
+    func launchAppHarbrIntegrationDashboard() {
+        XMediatorHelper.shared.launchAppHarbrIntegrationDashboard()
     }
     
     func openCMP() {

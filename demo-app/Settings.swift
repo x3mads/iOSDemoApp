@@ -3,12 +3,6 @@ import XMediator
 
 struct Settings {
     static let mediators = [
-        Mediator(name: "X3M",
-                 appKey: "3-15",
-                 bannerPlacementId: "3-15/28",
-                 interstitialPlacementId: "3-15/26",
-                 appOpenPlacementId: "3-15/7399",
-                 rewardedPlacementId: "3-15/27"),
         Mediator(name: "MAX",
                  appKey: "V148L42DRG",
                  bannerPlacementId: "V142XB3LRNZCM7",
@@ -26,6 +20,12 @@ struct Settings {
                  interstitialPlacementId: "V14JHR4V2LCPBMMY",
                  appOpenPlacementId: "V14JHR4VHLG8A741",
                  rewardedPlacementId: "V14JHR4V3L78QZQ2"),
+        Mediator(name: "X3M",
+                 appKey: "3-15",
+                 bannerPlacementId: "3-15/28",
+                 interstitialPlacementId: "3-15/26",
+                 appOpenPlacementId: "3-15/7399",
+                 rewardedPlacementId: "3-15/27"),
         ///Note: add your configuration here
         Mediator(name: "Custom",
                  appKey: "<replace>",

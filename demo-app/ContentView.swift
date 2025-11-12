@@ -94,6 +94,9 @@ struct InitSection: View {
             Button("Init SDK") { viewModel.start() }.buttonStyle(.bordered)
         }
         .disabled(viewModel.initStatus != .idle)
+        Button("Load Ads") { viewModel.loadAds() }
+            .buttonStyle(.bordered)
+            .disabled(viewModel.initStatus != .initialized)
     }
 }
 
@@ -119,7 +122,7 @@ struct ShowSection: View {
                 .disabled(viewModel.mediator.rewardedPlacementId == nil)
         }
         .padding()
-        .disabled(viewModel.initStatus != .initialized)
+        .disabled(viewModel.initStatus != .initialized || !viewModel.loadTriggered)
     }
 }
 
@@ -135,6 +138,9 @@ struct AnotherSection: View {
             }
             .disabled(!viewModel.cmp)
             .disabled(viewModel.initStatus != .initialized)
+            Button("AppHarbr Dashboard") { viewModel.launchAppHarbrIntegrationDashboard() }
+                .buttonStyle(.bordered)
+                .disabled(viewModel.initStatus != .initialized)
         }
     }
 }

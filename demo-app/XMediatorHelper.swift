@@ -1,4 +1,5 @@
 import XMediator
+import XMediatorAppHarbr
 
 class XMediatorHelper {
     static let shared = XMediatorHelper()
@@ -22,15 +23,15 @@ class XMediatorHelper {
             let verbose = true
             ///
             
+            let userProperties = UserProperties(userId: "appharbr-test-userid")
             let consentInformation = ConsentInformation(isCMPAutomationEnabled: cmp, cmpDebugSettings: cmpDebugSettings)
-            let initSettings = InitSettings(consentInformation: consentInformation, test: test, verbose: verbose)
+            let initSettings = InitSettings(userProperties: userProperties, consentInformation: consentInformation, test: test, verbose: verbose)
             XMediatorAds.startWith(appKey: mediator.appKey, initSettings: initSettings) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(_):
                     Utils.logger.log("init success { app_key: \(self.mediator.appKey) }")
                     self.isInitialized = true
-                    self.loadAds(mediator: self.mediator)
                     callback(.success(()))
                 case .failure(let error):
                     Utils.logger.error("init failure { app_key: \(mediator.appKey), error: \(error.localizedDescription) }")
@@ -108,7 +109,20 @@ class XMediatorHelper {
         }
     }
     
-    private func loadAds(mediator: Mediator) {
+    func launchAppHarbrIntegrationDashboard() {
+        switch mediator.name {
+        case "MAX":
+            AppHarbrAdQualityExtras.launchIntegrationDashboardForMax()
+        case "LevelPlay":
+            AppHarbrAdQualityExtras.launchIntegrationDashboardForLevelPlay()
+        case "AdMob":
+            AppHarbrAdQualityExtras.launchIntegrationDashboardForAdMob()
+        default:
+            return
+        }
+    }
+    
+    func loadAds() {
         if let bannerPlacementId = mediator.bannerPlacementId {
             XMediatorAds.banner.create(placementId: bannerPlacementId, size: Settings.bannerSize)
             Utils.logger.log("banner loading { placement_id: \(bannerPlacementId) }")

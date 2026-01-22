@@ -1,8 +1,14 @@
 import SwiftUI
 
+enum AdType {
+    case banner
+    case native
+}
+
 struct ContentView: View {
     @EnvironmentObject var viewModel: ContentViewModel
-    @State var bannerShown: Bool = false
+    @State var adShown: Bool = false
+    @State var adType: AdType = .banner
     
     var body: some View {
         NavigationStack {
@@ -11,12 +17,12 @@ struct ContentView: View {
                 ScrollView {
                     SettingsSection()
                     InitSection()
-                    ShowSection(bannerShown: $bannerShown)
+                    ShowSection(adShown: $adShown, adType: $adType)
                     AnotherSection()
                 }
                 .scrollBounceBehavior(.basedOnSize, axes: [.vertical])
                 
-                BannerViewSection(bannerShown: $bannerShown)
+                AdViewSection(adShown: $adShown, adType: $adType)
                 Spacer()
             }
         }
@@ -38,6 +44,9 @@ struct SettingsSection: View {
                             if let bannerPlacementId = viewModel.mediator.bannerPlacementId {
                                 Text("banner: \(bannerPlacementId)")
                             }
+                            if let nativePlacementId = Settings.nativeLayoutType == .standard ? viewModel.mediator.nativeStandardPlacementId : viewModel.mediator.nativeCompactPlacementId {
+                                Text("native: \(nativePlacementId)")
+                            }
                             if let interstitialPlacementId = viewModel.mediator.interstitialPlacementId {
                                 Text("interstitial: \(interstitialPlacementId)")
                             }
@@ -47,6 +56,7 @@ struct SettingsSection: View {
                             if let rewardedPlacementId = viewModel.mediator.rewardedPlacementId {
                                 Text("rewarded: \(rewardedPlacementId)")
                             }
+
                         }
                     } label: {
                         Image(systemName: "info.circle")
@@ -99,17 +109,37 @@ struct InitSection: View {
 
 struct ShowSection: View {
     @EnvironmentObject var viewModel: ContentViewModel
-    @Binding var bannerShown: Bool
+    @Binding var adShown: Bool
+    @Binding var adType: AdType
 
     var body: some View {
         VStack {
-            if !bannerShown {
-                Button("Show Banner") { bannerShown = true }.buttonStyle(.bordered)
-                    .disabled(viewModel.mediator.bannerPlacementId == nil)
-            }
-            else {
-                Button("Hide Banner") { bannerShown = false }.buttonStyle(.bordered)
-                    .disabled(viewModel.mediator.bannerPlacementId == nil)
+            HStack {
+                if adShown && adType == .banner {
+                    Button("Hide Banner") {
+                        adType = .banner
+                        adShown = false
+                    }.buttonStyle(.bordered)
+                } else {
+                    Button("Show Banner") {
+                        adType = .banner
+                        adShown = true
+                    }.buttonStyle(.bordered)
+                        .disabled(viewModel.mediator.bannerPlacementId == nil)
+                }
+                
+                if adShown && adType == .native {
+                    Button("Hide Native") {
+                        adType = .banner
+                        adShown = false
+                    }.buttonStyle(.bordered)
+                } else {
+                    Button("Show Native") {
+                        adType = .native
+                        adShown = true
+                    }.buttonStyle(.bordered)
+                        .disabled(Settings.nativeLayoutType == .standard ? viewModel.mediator.nativeStandardPlacementId == nil : viewModel.mediator.nativeCompactPlacementId == nil)
+                }
             }
             Button("Show Interstitial") { viewModel.showInterstitial() }.buttonStyle(.bordered)
                 .disabled(viewModel.mediator.interstitialPlacementId == nil)
@@ -139,20 +169,26 @@ struct AnotherSection: View {
     }
 }
 
-struct BannerViewSection: View {
+struct AdViewSection: View {
     @EnvironmentObject var viewModel: ContentViewModel
-    @Binding var bannerShown: Bool
+    @Binding var adShown: Bool
+    @Binding var adType: AdType
     
     var body: some View {
         Divider().frame(height: 2).background(Color.gray).padding(.horizontal)
         VStack {
-            bannerShown ? AnyView(BannerView()) : AnyView(Text("Banner Placeholder"))
+            if adShown {
+                if adType == .banner {
+                    AnyView(BannerView())
+                } else {
+                    AnyView(NativeView())
+                }
+            } else {
+                Text("Ad Placeholder")
+            }
         }
-        .onDisappear() {
-            bannerShown = false
-        }
-        .frame(width: Settings.bannerSize.get().width,
-               height: Settings.bannerSize.get().height)
+        .frame(width: adType == .banner ? Settings.bannerSize.get().width : Settings.nativeLayoutType.size().width,
+               height: adType == .banner ? Settings.bannerSize.get().height : Settings.nativeLayoutType.size().height)
         .background(Color.gray)
     }
 }

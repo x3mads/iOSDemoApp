@@ -12,6 +12,10 @@
 		FE9575282E410FEA003940D9 /* AppOpenAdsDelegateDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */; };
 		FF679CA62D5263960036D2F0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */; };
 		FF68C1C62D50F1020060F9E5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C1C52D50F1020060F9E5 /* Settings.swift */; };
+		FF7326D72F20112400F0087A /* X3MStandardNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7326D62F20112300F0087A /* X3MStandardNativeAdView.xib */; };
+		FF7326DC2F2102A200F0087A /* NativeAdsDelegateDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7326DB2F2102A200F0087A /* NativeAdsDelegateDemo.swift */; };
+		FF7326DE2F21054B00F0087A /* NativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7326DD2F21054B00F0087A /* NativeView.swift */; };
+		FF7326E22F2153AF00F0087A /* X3MCompactNativeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7326E12F2153AF00F0087A /* X3MCompactNativeAdView.xib */; };
 		FF7675192D4804680076B50E /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7675182D4804680076B50E /* DemoApp.swift */; };
 		FF76751B2D4804680076B50E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF76751A2D4804680076B50E /* ContentView.swift */; };
 		FF76751D2D48046A0076B50E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF76751C2D48046A0076B50E /* Assets.xcassets */; };
@@ -32,6 +36,10 @@
 		FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdsDelegateDemo.swift; sourceTree = "<group>"; };
 		FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FF68C1C52D50F1020060F9E5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		FF7326D62F20112300F0087A /* X3MStandardNativeAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = X3MStandardNativeAdView.xib; sourceTree = "<group>"; };
+		FF7326DB2F2102A200F0087A /* NativeAdsDelegateDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdsDelegateDemo.swift; sourceTree = "<group>"; };
+		FF7326DD2F21054B00F0087A /* NativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeView.swift; sourceTree = "<group>"; };
+		FF7326E12F2153AF00F0087A /* X3MCompactNativeAdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = X3MCompactNativeAdView.xib; sourceTree = "<group>"; };
 		FF7675152D4804680076B50E /* demo-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "demo-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF7675182D4804680076B50E /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		FF76751A2D4804680076B50E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +83,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FF7326D82F20112C00F0087A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF7326D62F20112300F0087A /* X3MStandardNativeAdView.xib */,
+				FF7326E12F2153AF00F0087A /* X3MCompactNativeAdView.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		FF76750C2D4804670076B50E = {
 			isa = PBXGroup;
 			children = (
@@ -102,8 +119,10 @@
 				FF7675182D4804680076B50E /* DemoApp.swift */,
 				FF76751A2D4804680076B50E /* ContentView.swift */,
 				FF7675262D4819490076B50E /* ContentViewModel.swift */,
+				FF7326D82F20112C00F0087A /* Resources */,
 				FFA93FC02D4D306E009507DD /* Delegates */,
 				FF76752D2D4966B00076B50E /* BannerView.swift */,
+				FF7326DD2F21054B00F0087A /* NativeView.swift */,
 				FF76752F2D4972760076B50E /* Utils.swift */,
 				FF68C1C52D50F1020060F9E5 /* Settings.swift */,
 				FF76751C2D48046A0076B50E /* Assets.xcassets */,
@@ -123,9 +142,10 @@
 		FFA93FC02D4D306E009507DD /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */,
 				FFA93FBA2D4D3004009507DD /* BannerAdsDelegateDemo.swift */,
+				FF7326DB2F2102A200F0087A /* NativeAdsDelegateDemo.swift */,
 				FFA93FBC2D4D3039009507DD /* InterstitialAdsDelegateDemo.swift */,
+				FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */,
 				FFA93FBE2D4D3053009507DD /* RewardedAdsDelegateDemo.swift */,
 			);
 			path = Delegates;
@@ -192,6 +212,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF7326D72F20112400F0087A /* X3MStandardNativeAdView.xib in Resources */,
+				FF7326E22F2153AF00F0087A /* X3MCompactNativeAdView.xib in Resources */,
 				FF679CA62D5263960036D2F0 /* Launch Screen.storyboard in Resources */,
 				FF7675202D48046A0076B50E /* Preview Assets.xcassets in Resources */,
 				FF76751D2D48046A0076B50E /* Assets.xcassets in Resources */,
@@ -264,7 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF7326DE2F21054B00F0087A /* NativeView.swift in Sources */,
 				FF7675302D4972760076B50E /* Utils.swift in Sources */,
+				FF7326DC2F2102A200F0087A /* NativeAdsDelegateDemo.swift in Sources */,
 				FF76752E2D4966B00076B50E /* BannerView.swift in Sources */,
 				FFA93FBD2D4D3039009507DD /* InterstitialAdsDelegateDemo.swift in Sources */,
 				FF76751B2D4804680076B50E /* ContentView.swift in Sources */,

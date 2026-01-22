@@ -12,6 +12,7 @@ target 'demo-app' do
   pod 'XMediator'
   pod 'XMediatorAppLovin'
   pod 'XMediatorIronSource'
+  pod 'XMediatorGoogleAds'
 
   # -- Ad Networks --
   # AppLovin
@@ -20,30 +21,29 @@ target 'demo-app' do
   # Chartboost
   pod 'ChartboostSDK'
   pod 'XMediatorChartboost'
-  pod 'IronSourceChartboostAdapter'
   pod 'AppLovinMediationChartboostAdapter'
+  pod 'IronSourceChartboostAdapter'
   # DT Exchange
   pod 'Fyber_Marketplace_SDK'
   pod 'XMediatorFyber'
-  pod 'IronSourceFyberAdapter'
   pod 'AppLovinMediationFyberAdapter'
+  pod 'IronSourceFyberAdapter'
   # Google Ads
   pod 'Google-Mobile-Ads-SDK'
-  pod 'XMediatorGoogleAds'
-  pod 'IronSourceAdMobAdapter'
   pod 'AppLovinMediationGoogleAdManagerAdapter'
   pod 'AppLovinMediationGoogleAdapter'
+  pod 'IronSourceAdMobAdapter'
   # IronSource
   pod 'IronSourceSDK'
   pod 'AppLovinMediationIronSourceAdapter'
   # Unity Ads
   pod 'UnityAds'
   pod 'XMediatorUnityAds'
-  pod 'IronSourceUnityAdsAdapter'
   pod 'AppLovinMediationUnityAdsAdapter'
+  pod 'IronSourceUnityAdsAdapter'
   # Liftoff Monetize
   pod 'VungleAds'
   pod 'XMediatorVungle'
-  pod 'IronSourceVungleAdapter'
   pod 'AppLovinMediationVungleAdapter'
+  pod 'IronSourceVungleAdapter'
 end

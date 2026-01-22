@@ -9,7 +9,7 @@ class XMediatorHelper {
     
     private init() {}
     
-    func initialize(callback: @escaping (Result<Void, Error>) -> () ){
+    func initialize(callback: @escaping (Result<Void, Error>) -> ()) {
         if isInitialized {
             Utils.logger.log("XMediatorHelper Already initialized")
         }
@@ -40,11 +40,16 @@ class XMediatorHelper {
         }
     }
     
-    func setDelegates(bannerAdsDelegate: BannerAdsDelegate, interstitialAdsDelegate: InterstitialAdsDelegate, rewardedAdsDelegate: RewardedAdsDelegate, appOpenAdsDelegate: AppOpenAdsDelegate){
+    func setDelegates(bannerAdsDelegate: BannerAdsDelegate,
+                      interstitialAdsDelegate: InterstitialAdsDelegate,
+                      rewardedAdsDelegate: RewardedAdsDelegate,
+                      appOpenAdsDelegate: AppOpenAdsDelegate,
+                      nativeAdsDelegate: NativeAdsDelegate) async {
         XMediatorAds.banner.addDelegate(bannerAdsDelegate)
         XMediatorAds.interstitial.addDelegate(interstitialAdsDelegate)
         XMediatorAds.rewarded.addDelegate(rewardedAdsDelegate)
         XMediatorAds.appOpen.addDelegate(appOpenAdsDelegate)
+        await XMediatorAds.native.addDelegate(nativeAdsDelegate)
     }
     
     func openDebuggingSuite() {
@@ -67,6 +72,13 @@ class XMediatorHelper {
             return nil
         }
         return try? XMediatorAds.banner.getView(forPlacementId: bannerPlacementId)
+    }
+    
+    func showNative(in containerView: UIView) async {
+        guard !initializeIfNeedIt(), let nativePlacementId = (Settings.nativeLayoutType == .standard ? mediator.nativeStandardPlacementId : mediator.nativeCompactPlacementId) else { return }
+        
+        let configuration = NativeRenderConfiguration(layout: Settings.nativeLayoutType.layout())
+        await XMediatorAds.native.present(in: containerView, placementId: nativePlacementId, configuration: configuration, adSpace: "native_space")
     }
     
     func showInterstitial() {
@@ -127,6 +139,13 @@ class XMediatorHelper {
         if let rewardedPlacementId = mediator.rewardedPlacementId {
             XMediatorAds.rewarded.load(placementId: rewardedPlacementId)
             Utils.logger.log("rewarded loading { placement_id: \(rewardedPlacementId) }")
+        }
+        
+        if let nativePlacementId = Settings.nativeLayoutType == .standard ? mediator.nativeStandardPlacementId : mediator.nativeCompactPlacementId {
+            Task {
+                await XMediatorAds.native.load(placementId: nativePlacementId)
+            }
+            Utils.logger.log("native loading { placement_id: \(nativePlacementId) }")
         }
     }
     

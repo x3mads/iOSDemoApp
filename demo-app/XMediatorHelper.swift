@@ -2,7 +2,6 @@ import XMediator
 
 class XMediatorHelper {
     static let shared = XMediatorHelper()
-    private var isInitialized: Bool = false
     var mediator: Mediator = Settings.mediators[0]
     var cmp: Bool = false
     var eeaRegion: Bool = false
@@ -10,7 +9,7 @@ class XMediatorHelper {
     private init() {}
     
     func initialize(callback: @escaping (Result<Void, Error>) -> ()) {
-        if isInitialized {
+        if XMediatorAds.isInitialized() {
             Utils.logger.log("XMediatorHelper Already initialized")
         }
         else {
@@ -29,7 +28,6 @@ class XMediatorHelper {
                 switch result {
                 case .success(_):
                     Utils.logger.log("init success { app_key: \(self.mediator.appKey) }")
-                    self.isInitialized = true
                     self.loadAds(mediator: self.mediator)
                     callback(.success(()))
                 case .failure(let error):
@@ -67,27 +65,31 @@ class XMediatorHelper {
     }
     
     func bannerView() -> UIView? {
-        if initializeIfNeedIt() { return nil }
         guard let bannerPlacementId = mediator.bannerPlacementId else {
             return nil
         }
+        XMediatorAds.banner.setAdSpace("banner_space", forPlacementId: bannerPlacementId)
         return try? XMediatorAds.banner.getView(forPlacementId: bannerPlacementId)
     }
     
     func showNative(in containerView: UIView) async {
-        guard !initializeIfNeedIt(), let nativePlacementId = (Settings.nativeLayoutType == .standard ? mediator.nativeStandardPlacementId : mediator.nativeCompactPlacementId) else { return }
+        guard let nativePlacementId = (Settings.nativeLayoutType == .standard ? mediator.nativeStandardPlacementId : mediator.nativeCompactPlacementId) else { return }
         
         let configuration = NativeRenderConfiguration(layout: Settings.nativeLayoutType.layout())
-        await XMediatorAds.native.present(in: containerView, placementId: nativePlacementId, configuration: configuration, adSpace: "native_space")
+        await XMediatorAds.native.present(in: containerView,
+                                          placementId: nativePlacementId,
+                                          configuration: configuration,
+                                          adSpace: "native_space")
     }
     
     func showInterstitial() {
-        if initializeIfNeedIt() { return }
         guard let placementId = mediator.interstitialPlacementId else {
             return
         }
         if XMediatorAds.interstitial.isReady(withPlacementId: placementId) {
-            Utils.getTopViewController().map { XMediatorAds.interstitial.present(withPlacementId: placementId, fromViewController: $0) }
+            Utils.getTopViewController().map { XMediatorAds.interstitial.present(withPlacementId: placementId,
+                                                                                 fromViewController: $0,
+                                                                                 fromAdSpace: "interstitial_space") }
         }
         else {
             Utils.logger.log("interstitial not ready { placement_id: \(placementId) }")
@@ -95,12 +97,13 @@ class XMediatorHelper {
     }
     
     func showAppOpen() {
-        if initializeIfNeedIt() { return }
         guard let placementId = mediator.appOpenPlacementId else {
             return
         }
         if XMediatorAds.appOpen.isReady(withPlacementId: placementId) {
-            Utils.getTopViewController().map { XMediatorAds.appOpen.present(withPlacementId: placementId, fromViewController: $0) }
+            Utils.getTopViewController().map { XMediatorAds.appOpen.present(withPlacementId: placementId,
+                                                                            fromViewController: $0,
+                                                                            fromAdSpace: "appopen_space") }
         }
         else {
             Utils.logger.log("app_open not ready { placement_id: \(placementId) }")
@@ -108,12 +111,13 @@ class XMediatorHelper {
     }
     
     func showRewarded() {
-        if initializeIfNeedIt() { return }
         guard let placementId = mediator.rewardedPlacementId else {
             return
         }
         if XMediatorAds.rewarded.isReady(withPlacementId: placementId) {
-            Utils.getTopViewController().map { XMediatorAds.rewarded.present(withPlacementId: placementId, fromViewController: $0) }
+            Utils.getTopViewController().map { XMediatorAds.rewarded.present(withPlacementId: placementId,
+                                                                             fromViewController: $0,
+                                                                             fromAdSpace: "rewarded_space") }
         }
         else {
             Utils.logger.log("rewarded not ready { placement_id: \(placementId) }")
@@ -148,12 +152,4 @@ class XMediatorHelper {
             Utils.logger.log("native loading { placement_id: \(nativePlacementId) }")
         }
     }
-    
-    private func initializeIfNeedIt() -> Bool {
-            if !isInitialized {
-                initialize() {_ in }
-                return true
-            }
-            return false
-        }
 }

@@ -95,7 +95,6 @@
 		FF76750C2D4804670076B50E = {
 			isa = PBXGroup;
 			children = (
-				FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */,
 				FF7675172D4804680076B50E /* demo-app */,
 				FF7675162D4804680076B50E /* Products */,
 				F630A1212B21809F6128812F /* Pods */,
@@ -127,6 +126,7 @@
 				FF68C1C52D50F1020060F9E5 /* Settings.swift */,
 				FF76751C2D48046A0076B50E /* Assets.xcassets */,
 				FF76751E2D48046A0076B50E /* Preview Content */,
+				FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */,
 			);
 			path = "demo-app";
 			sourceTree = "<group>";

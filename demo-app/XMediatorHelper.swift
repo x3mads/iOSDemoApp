@@ -22,7 +22,8 @@ class XMediatorHelper {
             ///
             
             let consentInformation = ConsentInformation(isCMPAutomationEnabled: cmp, cmpDebugSettings: cmpDebugSettings)
-            let initSettings = InitSettings(consentInformation: consentInformation, test: test, verbose: verbose)
+            let userProperties = UserProperties(userId: "user_id_demo_app")
+            let initSettings = InitSettings(userProperties: userProperties, consentInformation: consentInformation, test: test, verbose: verbose)
             XMediatorAds.startWith(appKey: mediator.appKey, initSettings: initSettings) { [weak self] result in
                 guard let self = self else { return }
                 switch result {

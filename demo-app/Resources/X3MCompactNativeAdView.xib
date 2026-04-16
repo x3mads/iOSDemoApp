@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,20 +31,24 @@
                                     <rect key="frame" x="0.0" y="0.0" width="314" height="60"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ZdS-xl-42q">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="56.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="57.333333333333336"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="m0V-nu-GJ7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="14.333333333333334"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="15"/>
                                                     <subviews>
                                                         <label opaque="NO" contentMode="left" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" text="Ad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djV-zk-QoE" userLabel="Ad Badge">
-                                                            <rect key="frame" x="0.0" y="0.0" width="15.333333333333334" height="14.333333333333334"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="15.333333333333334" height="15"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="15" id="YVS-df-Xqh"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="ZbQ-3E-k5Y"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" systemColor="systemOrangeColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="TITLE_LABEL Lorem ipsum dolor sit amet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6o-sa-dex" userLabel="Title Label">
-                                                            <rect key="frame" x="19.333333333333329" y="0.0" width="247.66666666666669" height="14.333333333333334"/>
+                                                            <rect key="frame" x="19.333333333333329" y="0.0" width="247.66666666666669" height="15"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                             <color key="textColor" red="0.45490193369999998" green="0.98431372640000003" blue="0.73333334920000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -54,35 +58,35 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </stackView>
                                                 <label hidden="YES" opaque="NO" contentMode="left" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="251" text="ADVERTISER_LABEL Lorem ipsum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-nQ-xBz" userLabel="Advertiser Label">
-                                                    <rect key="frame" x="0.0" y="16.333333333333332" width="164" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="17" width="164" height="0.0"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.4588235021" green="0.98431372640000003" blue="0.73333334920000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="800" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhS-wQ-VLe" userLabel="Body Label">
-                                                    <rect key="frame" x="0.0" y="18.333333333333332" width="314" height="14.333333333333332"/>
+                                                    <rect key="frame" x="0.0" y="19" width="314" height="14.333333333333336"/>
                                                     <string key="text">BODY_LABEL Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.45490193369999998" green="0.98431372640000003" blue="0.73333334920000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" contentMode="left" verticalHuggingPriority="800" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="800" text="STORE_LABEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="te1-BP-VDv" userLabel="Store Label">
-                                                    <rect key="frame" x="0.0" y="34.666666666666664" width="87.333333333333329" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="35.333333333333336" width="87.333333333333329" height="0.0"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <color key="textColor" red="0.45490193369999998" green="0.98431372640000003" blue="0.73333334920000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" contentMode="left" verticalHuggingPriority="800" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="800" text="PRICE_LABEL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhh-73-13j" userLabel="Price Label">
-                                                    <rect key="frame" x="0.0" y="34.666666666666664" width="83" height="0.0"/>
+                                                    <rect key="frame" x="0.0" y="35.333333333333336" width="83" height="0.0"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <color key="textColor" red="0.45490193369999998" green="0.98431372640000003" blue="0.73333334920000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="RHn-83-ioS" userLabel="Star Rating View">
-                                                    <rect key="frame" x="0.0" y="36.666666666666664" width="120" height="20"/>
+                                                    <rect key="frame" x="0.0" y="37.333333333333336" width="120" height="20"/>
                                                     <viewLayoutGuide key="safeArea" id="bSo-kC-aCO"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" systemColor="systemYellowColor"/>
@@ -150,7 +154,7 @@
     <resources>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

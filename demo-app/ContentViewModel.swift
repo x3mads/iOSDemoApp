@@ -1,46 +1,52 @@
 import SwiftUI
 import XMediator
 
-class ContentViewModel: ObservableObject {
+@MainActor
+final class ContentViewModel: ObservableObject {
+    private let adsStore: AdsStore
+
     @Published var mediator: Mediator = XMediatorHelper.shared.mediator {
         didSet {
             XMediatorHelper.shared.mediator = mediator
+            adsStore.update(mediator: mediator)
         }
     }
     @Published var initStatus: InitStatus = .idle
-    @Published var cmp: Bool = XMediatorHelper.shared.cmp {
-        didSet {
-            XMediatorHelper.shared.cmp = cmp
-        }
-    }
     
-    @Published var eeaRegion: Bool = XMediatorHelper.shared.eeaRegion {
-        didSet {
-            XMediatorHelper.shared.eeaRegion = eeaRegion
-        }
+    private let bannerDelegate: BannerAdsDelegateDemo
+    private let interstitialDelegate: InterstitialAdsDelegateDemo
+    private let appOpenDelegate: AppOpenAdsDelegateDemo
+    private let rewardedDelegate: RewardedAdsDelegateDemo
+    private let nativeDelegate: NativeAdsDelegateDemo
+
+    init(adsStore: AdsStore) {
+        self.adsStore = adsStore
+        self.bannerDelegate = BannerAdsDelegateDemo(store: adsStore)
+        self.interstitialDelegate = InterstitialAdsDelegateDemo(store: adsStore)
+        self.appOpenDelegate = AppOpenAdsDelegateDemo(store: adsStore)
+        self.rewardedDelegate = RewardedAdsDelegateDemo(store: adsStore)
+        self.nativeDelegate = NativeAdsDelegateDemo(store: adsStore)
     }
-    
-    private let bannerDelegate = BannerAdsDelegateDemo()
-    private let interstitialDelegate = InterstitialAdsDelegateDemo()
-    private let appOpenDelegate = AppOpenAdsDelegateDemo()
-    private let rewardedDelegate = RewardedAdsDelegateDemo()
-    private let nativeDelegate = NativeAdsDelegateDemo()
 
     func start() {
         initStatus = .initializing
-        XMediatorHelper.shared.initialize() { [weak self] result in
-            Task {
-                await self?.startFinish(result: result)
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            await setDelegates()
+            XMediatorHelper.shared.initialize() { [weak self] result in
+                Task { @MainActor in
+                    await self?.startFinish(result: result)
+                }
             }
         }
     }
     
-    func bannerView() -> UIView? {
-        XMediatorHelper.shared.bannerView()
+    func bannerView(adSpace: String = "banner_space") -> UIView? {
+        XMediatorHelper.shared.bannerView(adSpace: adSpace)
     }
     
-    func showNative(in containerView: UIView) async {
-        await XMediatorHelper.shared.showNative(in: containerView)
+    func showNative(in containerView: UIView, adSpace: String = "native_space") async {
+        await XMediatorHelper.shared.showNative(in: containerView, adSpace: adSpace)
     }
     
     func showInterstitial() {
@@ -75,7 +81,7 @@ class ContentViewModel: ObservableObject {
     private func startFinish(result: Result<Void, Error>) async {
         switch result {
         case .success(_):
-            await setDelegates()
+            await adsStore.refreshReadiness()
             initStatus = .initialized
         case .failure(_):
             initStatus = .idle

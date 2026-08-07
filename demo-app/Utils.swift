@@ -7,8 +7,18 @@ struct Utils {
     static let logger = os.Logger(subsystem: "com.x3mads", category: "DEMO_APP")
     
     static func getTopViewController() -> UIViewController? {
-        var topController = UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow?.rootViewController }.last
-        
+        let activeWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .first(where: { $0.activationState == .foregroundActive })?
+            .windows
+            .first { $0.isKeyWindow }
+        let fallbackWindow = activeWindow ??
+            UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap { $0.windows }
+                .first { $0.isKeyWindow }
+        var topController = fallbackWindow?.rootViewController
+
         while let newTopController = topController?.presentedViewController {
             topController = newTopController
         }
@@ -22,7 +32,7 @@ enum InitStatus {
     case initialized
 }
 
-enum NativeLayoutType {
+enum NativeLayoutType: Hashable {
     case standard
     case compact
     

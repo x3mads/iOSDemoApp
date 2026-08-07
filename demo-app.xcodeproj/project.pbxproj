@@ -7,7 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		079ED467338D47E28128315D /* PrivacyAndConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78DF51EEB64C90B64B4883 /* PrivacyAndConsentView.swift */; };
+		145969A6C5044AF796B23A02 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAF906270DA46A7AACE7A2A /* EdgeInsets.swift */; };
+		1C88A56792144864B345AC31 /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E11C03F6BEC4A6088B58BAA /* Titles.swift */; };
+		35962111BA9E4CCE84F6BFF3 /* AdTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3DAFF3C69A4031BF66F796 /* AdTypesView.swift */; };
+		3C500B792E5E402F85309D26 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEE779CE3F947A5A671D781 /* Theme.swift */; };
+		42C0882F75574BE3B5469107 /* AppOpenCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4215347C0E5E4AA0A2AF433C /* AppOpenCard.swift */; };
+		465789EF3FEA4BA390A1A3E8 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899DF33D8BA743CCA096D403 /* PrimaryButton.swift */; };
+		4809FCD4C8764CEC814A7069 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A23A5842FF345FFB9F6535D /* Card.swift */; };
+		5217FE000EB148E49B307CD2 /* NativeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE5E96F73B46CF9D03CD50 /* NativeCard.swift */; };
+		6AD6BDADF64E430D880E3D7C /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCA9A1F07CA4204A2529D72 /* SegmentedControl.swift */; };
+		867D489409E1453FB49FB786 /* LinkableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CC4B5849194A9A8DE1D2D9 /* LinkableCard.swift */; };
+		8E5DEAC01B6849128DCC9931 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1917DFA190240ECA9AC1C74 /* SecondaryButton.swift */; };
+		8FDE9FA9298A41EBB56BB56D /* EventTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71349BC2AF542B7B325011B /* EventTrackerView.swift */; };
+		A49E199689A4448EBA02FBA9 /* RewardedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CC9A64C50D4550BB3AD1DC /* RewardedCard.swift */; };
+		AD4F7D4FFB204B2CAC5CE51C /* AdsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5516724CED04CF6B0110B7E /* AdsStore.swift */; };
 		C7A2C557E8802FE3BE536F2A /* Pods_demo_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5529E296057B3CA18471523A /* Pods_demo_app.framework */; };
+		E85DB6DB302B4F3A005AFE17 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DB6DA302B4F3A005AFE17 /* SettingsView.swift */; };
+		E85DB6DD302B4F9C005AFE17 /* TertiaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DB6DC302B4F9C005AFE17 /* TertiaryButton.swift */; };
+		E85DB6DF302B7E1E005AFE17 /* BannerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DB6DE302B7E1E005AFE17 /* BannerCard.swift */; };
+		E85DB6E2302B8BB9005AFE17 /* NotSetUpAdTypeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DB6E1302B8BB9005AFE17 /* NotSetUpAdTypeCard.swift */; };
+		E85DB6E4302B9B0D005AFE17 /* NavBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DB6E3302B9B0D005AFE17 /* NavBarStyle.swift */; };
+		E9F4777379934E998BB93FB4 /* ConditionalModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B38F93E339435D99F0C650 /* ConditionalModifiers.swift */; };
+		F43AE7D4E52A482BAB8821C9 /* UserPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51E9D31B7C47BFB5228DE5 /* UserPropertiesView.swift */; };
+		F471988001744A058183C162 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2FB3847D7D4238926EFBB2 /* Colors.swift */; };
+		F527C27F824C43648C3C990C /* SimpleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9624054F994FAC98A08528 /* SimpleCard.swift */; };
+		FB59A5FC81DB4D5581EE1D15 /* InterstitialCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4073B762607D4A2983A4F20D /* InterstitialCard.swift */; };
 		FE86C9CF2E97E39A008A3E86 /* XMediatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86C9CE2E97E38F008A3E86 /* XMediatorHelper.swift */; };
 		FE9575282E410FEA003940D9 /* AppOpenAdsDelegateDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */; };
 		FF679CA62D5263960036D2F0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */; };
@@ -29,8 +54,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01CC4B5849194A9A8DE1D2D9 /* LinkableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkableCard.swift; sourceTree = "<group>"; };
 		182926B9E98D5D9237D9FC2D /* Pods-demo-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo-app.debug.xcconfig"; path = "Target Support Files/Pods-demo-app/Pods-demo-app.debug.xcconfig"; sourceTree = "<group>"; };
+		1A2FB3847D7D4238926EFBB2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		3E11C03F6BEC4A6088B58BAA /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
+		4073B762607D4A2983A4F20D /* InterstitialCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialCard.swift; sourceTree = "<group>"; };
+		4215347C0E5E4AA0A2AF433C /* AppOpenCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenCard.swift; sourceTree = "<group>"; };
+		4E78DF51EEB64C90B64B4883 /* PrivacyAndConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAndConsentView.swift; sourceTree = "<group>"; };
 		5529E296057B3CA18471523A /* Pods_demo_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demo_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57CC9A64C50D4550BB3AD1DC /* RewardedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedCard.swift; sourceTree = "<group>"; };
+		5C9624054F994FAC98A08528 /* SimpleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCard.swift; sourceTree = "<group>"; };
+		5EAF906270DA46A7AACE7A2A /* EdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
+		899DF33D8BA743CCA096D403 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		8A23A5842FF345FFB9F6535D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		96B38F93E339435D99F0C650 /* ConditionalModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalModifiers.swift; sourceTree = "<group>"; };
+		ACEE779CE3F947A5A671D781 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BD3DAFF3C69A4031BF66F796 /* AdTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTypesView.swift; sourceTree = "<group>"; };
+		CAFE5E96F73B46CF9D03CD50 /* NativeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeCard.swift; sourceTree = "<group>"; };
+		CDCA9A1F07CA4204A2529D72 /* SegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		CF51E9D31B7C47BFB5228DE5 /* UserPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPropertiesView.swift; sourceTree = "<group>"; };
+		E85DB6DA302B4F3A005AFE17 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E85DB6DC302B4F9C005AFE17 /* TertiaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TertiaryButton.swift; sourceTree = "<group>"; };
+		E85DB6DE302B7E1E005AFE17 /* BannerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCard.swift; sourceTree = "<group>"; };
+		E85DB6E1302B8BB9005AFE17 /* NotSetUpAdTypeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotSetUpAdTypeCard.swift; sourceTree = "<group>"; };
+		E85DB6E3302B9B0D005AFE17 /* NavBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarStyle.swift; sourceTree = "<group>"; };
+		F1917DFA190240ECA9AC1C74 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		F5516724CED04CF6B0110B7E /* AdsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsStore.swift; sourceTree = "<group>"; };
+		F71349BC2AF542B7B325011B /* EventTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTrackerView.swift; sourceTree = "<group>"; };
 		F88C5237B06E7AE0B983E05F /* Pods-demo-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo-app.release.xcconfig"; path = "Target Support Files/Pods-demo-app/Pods-demo-app.release.xcconfig"; sourceTree = "<group>"; };
 		FE86C9CE2E97E38F008A3E86 /* XMediatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMediatorHelper.swift; sourceTree = "<group>"; };
 		FE9575272E410FDA003940D9 /* AppOpenAdsDelegateDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOpenAdsDelegateDemo.swift; sourceTree = "<group>"; };
@@ -72,6 +122,59 @@
 				5529E296057B3CA18471523A /* Pods_demo_app.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA13BD7985DD4E3E893EA062 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				96B38F93E339435D99F0C650 /* ConditionalModifiers.swift */,
+				5EAF906270DA46A7AACE7A2A /* EdgeInsets.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E136FE69D3644031BF7852E7 /* Styleguide */ = {
+			isa = PBXGroup;
+			children = (
+				1A2FB3847D7D4238926EFBB2 /* Colors.swift */,
+				ACEE779CE3F947A5A671D781 /* Theme.swift */,
+				E85DB6E3302B9B0D005AFE17 /* NavBarStyle.swift */,
+				3E11C03F6BEC4A6088B58BAA /* Titles.swift */,
+				8A23A5842FF345FFB9F6535D /* Card.swift */,
+				5C9624054F994FAC98A08528 /* SimpleCard.swift */,
+				01CC4B5849194A9A8DE1D2D9 /* LinkableCard.swift */,
+				CDCA9A1F07CA4204A2529D72 /* SegmentedControl.swift */,
+				899DF33D8BA743CCA096D403 /* PrimaryButton.swift */,
+				F1917DFA190240ECA9AC1C74 /* SecondaryButton.swift */,
+				E85DB6DC302B4F9C005AFE17 /* TertiaryButton.swift */,
+			);
+			path = Styleguide;
+			sourceTree = "<group>";
+		};
+		E85DB6D9302B4F04005AFE17 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E85DB6E0302B8B98005AFE17 /* AdTypes */,
+				E85DB6DA302B4F3A005AFE17 /* SettingsView.swift */,
+				BD3DAFF3C69A4031BF66F796 /* AdTypesView.swift */,
+				4E78DF51EEB64C90B64B4883 /* PrivacyAndConsentView.swift */,
+				CF51E9D31B7C47BFB5228DE5 /* UserPropertiesView.swift */,
+				F71349BC2AF542B7B325011B /* EventTrackerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E85DB6E0302B8B98005AFE17 /* AdTypes */ = {
+			isa = PBXGroup;
+			children = (
+				E85DB6E1302B8BB9005AFE17 /* NotSetUpAdTypeCard.swift */,
+				E85DB6DE302B7E1E005AFE17 /* BannerCard.swift */,
+				CAFE5E96F73B46CF9D03CD50 /* NativeCard.swift */,
+				4215347C0E5E4AA0A2AF433C /* AppOpenCard.swift */,
+				4073B762607D4A2983A4F20D /* InterstitialCard.swift */,
+				57CC9A64C50D4550BB3AD1DC /* RewardedCard.swift */,
+			);
+			path = AdTypes;
 			sourceTree = "<group>";
 		};
 		F630A1212B21809F6128812F /* Pods */ = {
@@ -116,14 +219,18 @@
 				FE86C9CE2E97E38F008A3E86 /* XMediatorHelper.swift */,
 				FF76752C2D49062D0076B50E /* Info.plist */,
 				FF7675182D4804680076B50E /* DemoApp.swift */,
+				FF68C1C52D50F1020060F9E5 /* Settings.swift */,
+				F5516724CED04CF6B0110B7E /* AdsStore.swift */,
 				FF76751A2D4804680076B50E /* ContentView.swift */,
 				FF7675262D4819490076B50E /* ContentViewModel.swift */,
+				E85DB6D9302B4F04005AFE17 /* Views */,
 				FF7326D82F20112C00F0087A /* Resources */,
 				FFA93FC02D4D306E009507DD /* Delegates */,
 				FF76752D2D4966B00076B50E /* BannerView.swift */,
 				FF7326DD2F21054B00F0087A /* NativeView.swift */,
 				FF76752F2D4972760076B50E /* Utils.swift */,
-				FF68C1C52D50F1020060F9E5 /* Settings.swift */,
+				E136FE69D3644031BF7852E7 /* Styleguide */,
+				CA13BD7985DD4E3E893EA062 /* Utils */,
 				FF76751C2D48046A0076B50E /* Assets.xcassets */,
 				FF76751E2D48046A0076B50E /* Preview Content */,
 				FF679CA52D5263960036D2F0 /* Launch Screen.storyboard */,
@@ -253,9 +360,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-demo-app/Pods-demo-app-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-demo-app/Pods-demo-app-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -270,9 +381,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-demo-app/Pods-demo-app-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-demo-app/Pods-demo-app-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -287,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF7326DE2F21054B00F0087A /* NativeView.swift in Sources */,
+				E85DB6E4302B9B0D005AFE17 /* NavBarStyle.swift in Sources */,
 				FF7675302D4972760076B50E /* Utils.swift in Sources */,
 				FF7326DC2F2102A200F0087A /* NativeAdsDelegateDemo.swift in Sources */,
 				FF76752E2D4966B00076B50E /* BannerView.swift in Sources */,
@@ -299,6 +415,30 @@
 				FF68C1C62D50F1020060F9E5 /* Settings.swift in Sources */,
 				FFA93FBB2D4D3004009507DD /* BannerAdsDelegateDemo.swift in Sources */,
 				FF7675272D4819490076B50E /* ContentViewModel.swift in Sources */,
+				E85DB6DF302B7E1E005AFE17 /* BannerCard.swift in Sources */,
+				5217FE000EB148E49B307CD2 /* NativeCard.swift in Sources */,
+				42C0882F75574BE3B5469107 /* AppOpenCard.swift in Sources */,
+				FB59A5FC81DB4D5581EE1D15 /* InterstitialCard.swift in Sources */,
+				A49E199689A4448EBA02FBA9 /* RewardedCard.swift in Sources */,
+				079ED467338D47E28128315D /* PrivacyAndConsentView.swift in Sources */,
+				F43AE7D4E52A482BAB8821C9 /* UserPropertiesView.swift in Sources */,
+				8FDE9FA9298A41EBB56BB56D /* EventTrackerView.swift in Sources */,
+				F471988001744A058183C162 /* Colors.swift in Sources */,
+				E85DB6E2302B8BB9005AFE17 /* NotSetUpAdTypeCard.swift in Sources */,
+				3C500B792E5E402F85309D26 /* Theme.swift in Sources */,
+				E9F4777379934E998BB93FB4 /* ConditionalModifiers.swift in Sources */,
+				145969A6C5044AF796B23A02 /* EdgeInsets.swift in Sources */,
+				1C88A56792144864B345AC31 /* Titles.swift in Sources */,
+				4809FCD4C8764CEC814A7069 /* Card.swift in Sources */,
+				F527C27F824C43648C3C990C /* SimpleCard.swift in Sources */,
+				867D489409E1453FB49FB786 /* LinkableCard.swift in Sources */,
+				6AD6BDADF64E430D880E3D7C /* SegmentedControl.swift in Sources */,
+				AD4F7D4FFB204B2CAC5CE51C /* AdsStore.swift in Sources */,
+				35962111BA9E4CCE84F6BFF3 /* AdTypesView.swift in Sources */,
+				465789EF3FEA4BA390A1A3E8 /* PrimaryButton.swift in Sources */,
+				E85DB6DB302B4F3A005AFE17 /* SettingsView.swift in Sources */,
+				8E5DEAC01B6849128DCC9931 /* SecondaryButton.swift in Sources */,
+				E85DB6DD302B4F9C005AFE17 /* TertiaryButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +578,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "demo-app/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = X3M;
+				INFOPLIST_KEY_CFBundleDisplayName = Loomit;
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -474,7 +614,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "demo-app/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = X3M;
+				INFOPLIST_KEY_CFBundleDisplayName = Loomit;
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

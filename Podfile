@@ -13,7 +13,7 @@ target 'demo-app' do
   pod 'XMediatorAppLovin'
   pod 'XMediatorIronSource'
   pod 'XMediatorGoogleAds'
-
+  pod 'XMediatorGoogleUMP'
   # -- Ad Networks --
   # AppLovin
   pod 'AppLovinSDK'

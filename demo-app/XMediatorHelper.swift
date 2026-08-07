@@ -1,36 +1,56 @@
 import XMediator
 
-class XMediatorHelper {
+final class XMediatorHelper {
     static let shared = XMediatorHelper()
-    var mediator: Mediator = Settings.mediators[0]
-    var cmp: Bool = false
-    var eeaRegion: Bool = false
-    
+    @MainActor var mediator: Mediator = Settings.currentMediator
+
     private init() {}
     
     func initialize(callback: @escaping (Result<Void, Error>) -> ()) {
         if XMediatorAds.isInitialized() {
             Utils.logger.log("XMediatorHelper Already initialized")
+            callback(.success(()))
         }
         else {
-            Utils.logger.log("start { app_key: \(self.mediator.appKey), cmp: \(self.cmp), eea_region: \(self.eeaRegion) }")
+            let mediator = Settings.currentMediator
+            let cmp = Settings.cmpAutomation
+            let eeaRegion = Settings.cmpDebugGeographyOption == .eea
+            Utils.logger.log("start { app_key: \(mediator.appKey), cmp: \(cmp), eea_region: \(eeaRegion) }")
             
             ///Note: use these settings for debug only
-            let cmpDebugSettings = eeaRegion ? CMPDebugSettings(debugGeography: .EEA) : nil
-            let test = true
-            let verbose = true
+            let cmpDebugSettings = Settings.cmpDebugGeography == .disabled ? nil : CMPDebugSettings(debugGeography: Settings.cmpDebugGeography)
+            let test = Settings.testMode
+            let verbose = Settings.verbose
             ///
             
             let consentInformation = ConsentInformation(isCMPAutomationEnabled: cmp, cmpDebugSettings: cmpDebugSettings)
-            let userProperties = UserProperties(userId: "user_id_demo_app")
+            var customProperties = CustomProperties()
+            Settings.customProperties.forEach { property in
+                switch property.type {
+                case "bool":
+                    if let value = Bool(property.value) { customProperties.addBool(key: property.key, value: value) }
+                case "int":
+                    if let value = Int(property.value) { customProperties.addInt(key: property.key, value: value) }
+                case "double":
+                    if let value = Double(property.value) { customProperties.addDouble(key: property.key, value: value) }
+                case "float":
+                    if let value = Float(property.value) { customProperties.addDouble(key: property.key, value: Double(value)) }
+                default:
+                    customProperties.addString(key: property.key, value: property.value)
+                }
+            }
+            let userProperties = UserProperties(userId: "user_id_demo_app", customProperties: customProperties)
             let initSettings = InitSettings(userProperties: userProperties, consentInformation: consentInformation, test: test, verbose: verbose)
             XMediatorAds.startWith(appKey: mediator.appKey, initSettings: initSettings) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(_):
-                    Utils.logger.log("init success { app_key: \(self.mediator.appKey) }")
-                    self.loadAds(mediator: self.mediator)
-                    callback(.success(()))
+                    Utils.logger.log("init success { app_key: \(mediator.appKey) }")
+                    Task {
+                        await MainActor.run { self.mediator = mediator }
+                        await self.loadAds(mediator: mediator)
+                        callback(.success(()))
+                    }
                 case .failure(let error):
                     Utils.logger.error("init failure { app_key: \(mediator.appKey), error: \(error.localizedDescription) }")
                     callback(.failure(error))
@@ -64,25 +84,28 @@ class XMediatorHelper {
     func resetCMP() {
         XMediatorAds.cmpProvider.reset()
     }
-    
-    func bannerView() -> UIView? {
+
+    @MainActor
+    func bannerView(adSpace: String = "banner_space") -> UIView? {
         guard let bannerPlacementId = mediator.bannerPlacementId else {
             return nil
         }
-        XMediatorAds.banner.setAdSpace("banner_space", forPlacementId: bannerPlacementId)
+        XMediatorAds.banner.setAdSpace(adSpace, forPlacementId: bannerPlacementId)
         return try? XMediatorAds.banner.getView(forPlacementId: bannerPlacementId)
     }
-    
-    func showNative(in containerView: UIView) async {
+
+    @MainActor
+    func showNative(in containerView: UIView, adSpace: String = "native_space") async {
         guard let nativePlacementId = (Settings.nativeLayoutType == .standard ? mediator.nativeStandardPlacementId : mediator.nativeCompactPlacementId) else { return }
         
         let configuration = NativeRenderConfiguration(layout: Settings.nativeLayoutType.layout())
         await XMediatorAds.native.present(in: containerView,
                                           placementId: nativePlacementId,
                                           configuration: configuration,
-                                          adSpace: "native_space")
+                                          adSpace: adSpace)
     }
-    
+
+    @MainActor
     func showInterstitial() {
         guard let placementId = mediator.interstitialPlacementId else {
             return
@@ -96,7 +119,8 @@ class XMediatorHelper {
             Utils.logger.log("interstitial not ready { placement_id: \(placementId) }")
         }
     }
-    
+
+    @MainActor
     func showAppOpen() {
         guard let placementId = mediator.appOpenPlacementId else {
             return
@@ -110,7 +134,8 @@ class XMediatorHelper {
             Utils.logger.log("app_open not ready { placement_id: \(placementId) }")
         }
     }
-    
+
+    @MainActor
     func showRewarded() {
         guard let placementId = mediator.rewardedPlacementId else {
             return
@@ -125,9 +150,11 @@ class XMediatorHelper {
         }
     }
     
-    private func loadAds(mediator: Mediator) {
+    private func loadAds(mediator: Mediator) async {
         if let bannerPlacementId = mediator.bannerPlacementId {
-            XMediatorAds.banner.create(placementId: bannerPlacementId, size: Settings.bannerSize)
+            await MainActor.run {
+                XMediatorAds.banner.create(placementId: bannerPlacementId, size: Settings.bannerSize)
+            }
             Utils.logger.log("banner loading { placement_id: \(bannerPlacementId) }")
         }
 

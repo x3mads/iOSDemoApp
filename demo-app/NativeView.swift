@@ -3,10 +3,15 @@ import XMediator
 
 struct NativeView: UIViewRepresentable {
     @EnvironmentObject var viewModel: ContentViewModel
+    let adSpace: String
     let containerView = ContainerView.create()
 
+    init(adSpace: String = "native_space") {
+        self.adSpace = adSpace
+    }
+
     func makeUIView(context: Context) -> UIView {
-        Task { await viewModel.showNative(in: containerView.bridgeView) }
+        Task { await viewModel.showNative(in: containerView.bridgeView, adSpace: adSpace) }
         return containerView
     }
 

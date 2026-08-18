@@ -33,8 +33,6 @@ final class XMediatorHelper {
                     if let value = Int(property.value) { customProperties.addInt(key: property.key, value: value) }
                 case "double":
                     if let value = Double(property.value) { customProperties.addDouble(key: property.key, value: value) }
-                case "float":
-                    if let value = Float(property.value) { customProperties.addDouble(key: property.key, value: Double(value)) }
                 default:
                     customProperties.addString(key: property.key, value: property.value)
                 }

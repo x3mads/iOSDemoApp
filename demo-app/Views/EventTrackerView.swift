@@ -137,7 +137,6 @@ struct EventTrackerView: View {
             case .bool: if let value = Bool(value) { result.addBool(key: key, value: value) }
             case .int: if let value = Int(value) { result.addInt(key: key, value: value) }
             case .double: if let value = Double(value) { result.addDouble(key: key, value: value) }
-            case .float: if let value = Float(value) { result.addDouble(key: key, value: Double(value)) }
             }
         }
         return result.getAll().isEmpty ? nil : result

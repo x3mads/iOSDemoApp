@@ -37,7 +37,7 @@ private struct UserPropertiesTitle: View {
 
 struct UserPropertiesView: View {
     @State private var userId = ""
-    @State private var installDate = ""
+    @State private var installDate: Date? = nil
     @State private var totalAmountSpent = ""
     @State private var currencyCode = ""
     @State private var numberOfPurchases = ""
@@ -63,10 +63,25 @@ struct UserPropertiesView: View {
                 Card {
                     VStack(alignment: .leading, spacing: Theme.Card.minimalSpacing) {
                         UserPropertiesTitle(text: "Install Date")
-                        settingsField("ISO 8601 date", text: $installDate)
-                        Text("Leave empty to clear the install date.")
-                            .font(.system(size: 12))
-                            .foregroundColor(Colors.secondaryText)
+                        HStack(spacing: 8) {
+                            if installDate != nil {
+                                DatePicker("",
+                                    selection: Binding(
+                                        get: { installDate ?? Date() },
+                                        set: { installDate = $0 }
+                                    ),
+                                    displayedComponents: [.date]
+                                )
+                                .datePickerStyle(.compact)
+                                .labelsHidden()
+                                UserTertiaryButton("Clear") { installDate = nil }
+                            } else {
+                                Text("(none)")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(Colors.secondaryText)
+                                UserTertiaryButton("Pick") { installDate = Date() }
+                            }
+                        }
                         HStack(spacing: 8) {
                             SecondaryButton("Get", size: 14, maxWidth: true) { loadInstallDate() }
                             PrimaryButton("Set", size: 14, maxWidth: true) { saveInstallDate() }
@@ -172,48 +187,54 @@ struct UserPropertiesView: View {
     }
 
     private func loadUserId() {
-        userId = XMediatorAds.getUserProperties().userId ?? ""
+        userId = XMediatorAds.userProperties.get().userId ?? ""
         log("User ID loaded")
     }
 
     private func saveUserId() {
-        var properties = XMediatorAds.getUserProperties()
-        properties.userId = userId.isEmpty ? nil : userId
-        XMediatorAds.setUserProperties(properties)
+        XMediatorAds.userProperties.setUserId(userId.isEmpty ? nil : userId)
         log("User ID saved")
         loadUserId()
     }
 
     private func loadInstallDate() {
-        installDate = XMediatorAds.getUserProperties().installDate.map { ISO8601DateFormatter().string(from: $0) } ?? ""
+        installDate = XMediatorAds.userProperties.get().installDate
         log("Install date loaded")
     }
 
     private func saveInstallDate() {
-        let current = XMediatorAds.getUserProperties()
-        XMediatorAds.setUserProperties(UserProperties(userId: current.userId,
-                                                      installDate: ISO8601DateFormatter().date(from: installDate),
-                                                      purchaseSummary: current.purchaseSummary,
-                                                      customProperties: current.customProperties))
+        XMediatorAds.userProperties.setInstallDate(installDate)
         log("Install date saved")
         loadInstallDate()
     }
 
     private func loadPurchaseInfo() {
-        let properties = XMediatorAds.getUserProperties()
+        let properties = XMediatorAds.userProperties.get()
         totalAmountSpent = properties.purchaseSummary?.totalAmountSpent.map { String($0) } ?? ""
         currencyCode = properties.purchaseSummary?.currencyCode ?? ""
         numberOfPurchases = properties.purchaseSummary?.numberOfPurchases.map { String($0) } ?? ""
-        loadCustomProperties(properties.customProperties.getAll())
+        loadCustomProperties(properties.customProperties)
         log("Purchase summary loaded")
     }
 
     private func savePurchaseInfo() {
-        saveProperties()
+        let amount = Double(totalAmountSpent)
+        let currency = currencyCode.isEmpty ? nil : currencyCode
+        let count = Int(numberOfPurchases)
+        if amount != nil || count != nil || currency != nil {
+            let purchase = InAppPurchaseSummary(totalAmountSpent: amount,
+                                                currencyCode: currency,
+                                                numberOfPurchases: count)
+            XMediatorAds.userProperties.setPurchaseSummary(purchase)
+        } else {
+            XMediatorAds.userProperties.setPurchaseSummary(nil)
+        }
+        log("Purchase summary saved")
+        loadPurchaseInfo()
     }
 
-    private func loadCustomProperties(_ values: [String: AnyHashable]) {
-        customProperties = values.compactMap { key, value in
+    private func loadCustomProperties(_ values: CustomProperties) {
+        customProperties = values.getAll().compactMap { key, value in
             switch value {
             case let value as Bool:
                 return CustomPropertyRow(key: key, value: String(value), valueType: .bool)
@@ -230,54 +251,42 @@ struct UserPropertiesView: View {
     }
 
     private func loadCustomProperties() {
-        loadCustomProperties(XMediatorAds.getUserProperties().customProperties.getAll())
+        loadCustomProperties(XMediatorAds.userProperties.get().customProperties)
         log("Custom properties loaded")
     }
 
     private func saveCustomProperties() {
-        let current = XMediatorAds.getUserProperties()
-        var properties = CustomProperties()
+        XMediatorAds.userProperties.clearCustomProperties()
         customProperties.forEach { property in
             let key = property.key.trimmingCharacters(in: .whitespacesAndNewlines)
             let value = property.value.trimmingCharacters(in: .whitespacesAndNewlines)
             guard !key.isEmpty else { return }
             switch property.valueType {
-            case .string: properties.addString(key: key, value: value)
-            case .bool: if let value = Bool(value) { properties.addBool(key: key, value: value) }
-            case .int: if let value = Int(value) { properties.addInt(key: key, value: value) }
-            case .double: if let value = Double(value) { properties.addDouble(key: key, value: value) }
-            case .float: if let value = Float(value) { properties.addDouble(key: key, value: Double(value)) }
+            case .string:
+                XMediatorAds.userProperties.setCustomProperty(key: key, value: value)
+            case .bool: if let value = Bool(value) {
+                XMediatorAds.userProperties.setCustomProperty(key: key, value: value)
             }
+            case .int: if let value = Int(value) {
+                XMediatorAds.userProperties.setCustomProperty(key: key, value: value)
+            }
+            case .double: if let value = Double(value) {
+                XMediatorAds.userProperties.setCustomProperty(key: key, value: value)
+            }}
         }
-        XMediatorAds.setUserProperties(UserProperties(userId: current.userId,
-                                                      installDate: current.installDate,
-                                                      purchaseSummary: current.purchaseSummary,
-                                                      customProperties: properties))
         log("Custom properties saved")
-        loadCustomProperties(XMediatorAds.getUserProperties().customProperties.getAll())
+        loadCustomProperties(XMediatorAds.userProperties.get().customProperties)
     }
 
     private func loadProperties() {
-        let properties = XMediatorAds.getUserProperties()
+        let properties = XMediatorAds.userProperties.get()
         userId = properties.userId ?? ""
-        installDate = properties.installDate.map { ISO8601DateFormatter().string(from: $0) } ?? ""
+        installDate = properties.installDate
         totalAmountSpent = properties.purchaseSummary?.totalAmountSpent.map { String($0) } ?? ""
         currencyCode = properties.purchaseSummary?.currencyCode ?? ""
         numberOfPurchases = properties.purchaseSummary?.numberOfPurchases.map { String($0) } ?? ""
-        loadCustomProperties(properties.customProperties.getAll())
+        loadCustomProperties(properties.customProperties)
         log("User properties loaded")
-    }
-
-    private func saveProperties() {
-        let current = XMediatorAds.getUserProperties()
-        XMediatorAds.setUserProperties(UserProperties(userId: current.userId,
-                                                      installDate: current.installDate,
-                                                      purchaseSummary: InAppPurchaseSummary(totalAmountSpent: Double(totalAmountSpent),
-                                                                                            currencyCode: currencyCode.isEmpty ? nil : currencyCode,
-                                                                                            numberOfPurchases: Int(numberOfPurchases)),
-                                                      customProperties: current.customProperties))
-        log("Purchase summary saved")
-        loadPurchaseInfo()
     }
 
     private func log(_ message: String) {

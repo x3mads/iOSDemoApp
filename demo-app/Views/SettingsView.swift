@@ -37,7 +37,6 @@ struct SettingsView: View {
                                     .font(.system(size: 14, weight: .semibold))
                                     .foregroundColor(Colors.secondaryTitle)
                                 Picker("Preset", selection: $selectedPreset) {
-                                    Text("Custom").tag("Custom")
                                     ForEach(Settings.mediators, id: \.self) { mediator in
                                         Text(mediator.name).tag(mediator.name)
                                     }
@@ -285,7 +284,6 @@ enum CustomPropertyType: String, CaseIterable, Identifiable {
     case bool
     case int
     case double
-    case float
 
     var id: String { rawValue }
     var isNumber: Bool { self != .string && self != .bool }

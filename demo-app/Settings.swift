@@ -91,14 +91,16 @@ struct Settings {
 
     static var currentMediator: Mediator {
         let defaults = UserDefaults.standard
-        guard let appKey = defaults.string(forKey: appKeyKey) else { return mediators.first ?? Mediator(name: "Custom", appKey: "") }
-        return Mediator(name: "Custom", appKey: appKey,
-                        bannerPlacementId: optionalValue(defaults.string(forKey: bannerPlacementIdKey)),
-                        interstitialPlacementId: optionalValue(defaults.string(forKey: interstitialPlacementIdKey)),
-                        appOpenPlacementId: optionalValue(defaults.string(forKey: appOpenPlacementIdKey)),
-                        rewardedPlacementId: optionalValue(defaults.string(forKey: rewardedPlacementIdKey)),
-                        nativeCompactPlacementId: optionalValue(defaults.string(forKey: nativeCompactPlacementIdKey)),
-                        nativeStandardPlacementId: optionalValue(defaults.string(forKey: nativeStandardPlacementIdKey)))
+        guard let appKey = defaults.string(forKey: appKeyKey) else { return mediators.first! }
+        return mediators.first { $0.appKey == appKey } ?? Mediator(
+            name: "Custom", appKey: appKey,
+            bannerPlacementId: optionalValue(defaults.string(forKey: bannerPlacementIdKey)),
+            interstitialPlacementId: optionalValue(defaults.string(forKey: interstitialPlacementIdKey)),
+            appOpenPlacementId: optionalValue(defaults.string(forKey: appOpenPlacementIdKey)),
+            rewardedPlacementId: optionalValue(defaults.string(forKey: rewardedPlacementIdKey)),
+            nativeCompactPlacementId: optionalValue(defaults.string(forKey: nativeCompactPlacementIdKey)),
+            nativeStandardPlacementId: optionalValue(defaults.string(forKey: nativeStandardPlacementIdKey))
+        )
     }
 
     static var bannerSizeType: BannerSizeType {
